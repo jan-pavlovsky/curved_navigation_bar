@@ -45,6 +45,16 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
   AnimationController _animationController;
   int _length;
 
+  void animate(double value) {
+    _animationController.value = value;
+  }
+
+  void setIcon(int index) {
+    setState(() {
+      _icon = widget.items[index];
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -142,6 +152,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                 child: Row(
                     children: widget.items.map((item) {
                   return NavButton(
+                    height: widget.height,
                     onTap: _buttonTap,
                     position: _pos,
                     length: _length,
@@ -155,7 +166,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
     );
   }
 
-  void setPage(int index){
+  void setPage(int index) {
     _buttonTap(index);
   }
 

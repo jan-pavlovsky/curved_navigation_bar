@@ -6,8 +6,15 @@ class NavButton extends StatelessWidget {
   final int index;
   final ValueChanged<int> onTap;
   final Widget child;
+  final double height;
 
-  NavButton({this.onTap, this.position, this.length, this.index, this.child});
+  NavButton(
+      {this.onTap,
+      this.position,
+      this.length,
+      this.index,
+      this.child,
+      this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,7 @@ class NavButton extends StatelessWidget {
           onTap(index);
         },
         child: Container(
-            height: 75.0,
+            height: height - 12,
             child: Transform.translate(
               offset: Offset(
                   0, difference < 1.0 / length ? verticalAlignment * 40 : 0),
